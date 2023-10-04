@@ -1,0 +1,6 @@
+Terraria but ...
+
+Dying will randomize your stats
+Killing a enemy may drop random weapon
+Killing enemy will randomly boost stats slightly
+NPC get randomize stats
