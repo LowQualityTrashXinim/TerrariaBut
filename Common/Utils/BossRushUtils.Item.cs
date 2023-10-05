@@ -1,6 +1,4 @@
 ﻿using System;
-using BossRush.Common.RoguelikeChange;
-using BossRush.Contents.Items.Chest;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -97,40 +95,6 @@ namespace BossRush
             CheckVanillaSwingWithModded,
             CheckOnlyModded,
             CheckOnlyModdedWithoutDefault
-        }
-        /// <summary>
-        /// This allow for easy access toward chest and related logic, tho this work on terraria progression
-        /// </summary>
-        /// <param name="player"></param>
-        public static void DropWeaponFromChestPool(Player player)
-        {
-            LootBoxBase.GetWeapon(out int Weapon, out int amount);
-            player.QuickSpawnItem(null, Weapon, amount);
-        }
-        public static bool CheckUseStyleMelee(this Item item, MeleeStyle WhatToCheck)
-        {
-            if(item.TryGetGlobalItem(out MeleeWeaponOverhaul meleeItem))
-            {
-            switch (WhatToCheck)
-            {
-                case MeleeStyle.CheckVanillaSwingWithModded:
-                    return item.useStyle == ItemUseStyleID.Swing
-                        || meleeItem.SwingType == BossRushUseStyle.GenericSwingDownImprove
-                        || meleeItem.SwingType == BossRushUseStyle.Swipe
-                        || meleeItem.SwingType == BossRushUseStyle.Poke;
-                case MeleeStyle.CheckOnlyModded:
-                    return meleeItem.SwingType == BossRushUseStyle.GenericSwingDownImprove
-                        || meleeItem.SwingType == BossRushUseStyle.Swipe
-                        || meleeItem.SwingType == BossRushUseStyle.Poke;
-                case MeleeStyle.CheckOnlyModdedWithoutDefault:
-                    return meleeItem.SwingType == BossRushUseStyle.Swipe
-                        || meleeItem.SwingType == BossRushUseStyle.Poke;
-                default:
-                    Console.WriteLine("Fail to know what to check !");
-                    return false;
-            }
-            }
-            return false;
         }
     }
 }

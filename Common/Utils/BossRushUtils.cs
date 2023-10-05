@@ -2,7 +2,6 @@
 using Terraria;
 using Terraria.ID;
 using System.Linq;
-using BossRush.Texture;
 using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
@@ -15,10 +14,6 @@ namespace BossRush
         {
             var type = typeof(T);
             string NameSpace = type.Namespace;
-            if (NameSpace == null)
-            {
-                return BossRushTexture.MISSINGTEXTURE;
-            }
             return NameSpace.Replace(".", "/") + "/" + type.Name;
         }
         public static string GetTheSameTextureAs<T>(string altName = "") where T : class
@@ -29,10 +24,6 @@ namespace BossRush
                 altName = type.Name;
             }
             string NameSpace = type.Namespace;
-            if (NameSpace == null)
-            {
-                return BossRushTexture.MISSINGTEXTURE;
-            }
             return NameSpace.Replace(".", "/") + "/" + altName;
         }
         public static string GetVanillaTexture<T>(int EntityType) where T : class => $"Terraria/Images/{typeof(T).Name}_{EntityType}";

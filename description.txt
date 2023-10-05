@@ -4,3 +4,11 @@ Dying will randomize your stats
 Killing a enemy may drop random weapon
 Killing enemy will randomly boost stats slightly
 NPC get randomize stats
+NPC hitting player will reduce player max life
+Weapon will have randomize stats
+You may sometime teleport random
+
+This mod :
+- Isn't meant to be balanced, it is meant to be a "experience".
+- Won't be maintain unless tmod drop a new update that affect this mod code, then I will do smth about it
+
