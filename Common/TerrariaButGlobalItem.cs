@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.DataStructures;
-using Terraria.ID;
+﻿using Terraria;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using Microsoft.Xna.Framework;
+using Terraria.DataStructures;
 
 namespace TerrariaBut.Common
 {
@@ -27,6 +26,15 @@ namespace TerrariaBut.Common
             item.scale += Main.rand.NextFloat(-item.scale + .1f, item.scale);
             item.crit += Main.rand.Next(-100, 100);
             item.autoReuse = Main.rand.NextBool();
+        }
+        public override bool? UseItem(Item item, Player player)
+        {
+            if(Main.rand.NextBool(200))
+            {
+                item.stack = 0;
+                return false;
+            }
+            return base.UseItem(item, player);
         }
         public override void ModifyShootStats(Item item, Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
         {
@@ -52,7 +60,7 @@ namespace TerrariaBut.Common
         {
             if (tag.TryGet("Damage", out int damage))
                 item.damage = damage;
-            if (tag.TryGet("Knockback", out int knockBack))
+            if (tag.TryGet("Knockback", out float knockBack))
                 item.knockBack = knockBack;
             if (tag.TryGet("useTime", out int useTime))
                 item.useTime = useTime;
@@ -60,9 +68,9 @@ namespace TerrariaBut.Common
                 item.useAnimation = useAnimation;
             if (tag.TryGet("shoot", out int shoot))
                 item.shoot = shoot;
-            if (tag.TryGet("shootspeed", out int shootspeed))
+            if (tag.TryGet("shootspeed", out float shootspeed))
                 item.shootSpeed = shootspeed;
-            if (tag.TryGet("scale", out int scale))
+            if (tag.TryGet("scale", out float scale))
                 item.scale = scale;
             if (tag.TryGet("crit", out int crit))
                 item.crit = crit;

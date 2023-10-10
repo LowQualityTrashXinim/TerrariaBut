@@ -4,6 +4,8 @@ using System.IO;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Terraria.DataStructures;
+using Terraria.ID;
+using BossRush;
 
 namespace TerrariaBut.Common
 {
@@ -278,13 +280,41 @@ namespace TerrariaBut.Common
                 SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
             }
         }
+        public override void OnHitAnything(float x, float y, Entity victim)
+        {
+            if (Main.rand.NextBool(200))
+            {
+                BossRushUtils.GetWeapon(out int Weapon, out int amount);
+                Player.QuickSpawnItem(Player.GetSource_FromThis(), Weapon, amount);
+            }
+        }
         public override void OnHitByNPC(NPC npc, Player.HurtInfo hurtInfo)
         {
-            HPMax--;
+            OnHitEffect();
         }
         public override void OnHitByProjectile(Projectile proj, Player.HurtInfo hurtInfo)
         {
-            HPMax--;
+            OnHitEffect();
+        }
+        private void OnHitEffect()
+        {
+            HPMax -= Main.rand.Next(1, 11);
+            if (Main.rand.NextBool(100))
+            {
+                if (Main.netMode == NetmodeID.SinglePlayer)
+                    Player.TeleportationPotion();
+                else if (Main.netMode == NetmodeID.MultiplayerClient)
+                    NetMessage.SendData(MessageID.RequestTeleportationByServer);
+            }
+            if (Main.rand.NextBool(20))
+                Player.DropSelectedItem();
+            else if (Main.rand.NextBool(150))
+            {
+                for (int i = 0; i < Player.inventory.Length; i++)
+                {
+                    Player.DropItem(Player.GetSource_FromThis(), Player.Center, ref Player.inventory[i]);
+                }
+            }
         }
     }
 }

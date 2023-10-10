@@ -1,14 +1,18 @@
 Terraria but ...
 
-Dying will randomize your stats
-Killing a enemy may drop random weapon
+Dying will randomize your stats to a extend
+Hitting a enemy will have rare chance to drop random weapon accordingly to progression
+Weapon have 0.5% chance to broke
 Killing enemy will randomly boost stats slightly
-NPC get randomize stats
+NPC's hp, damage is randomize
 NPC hitting player will reduce player max life
-Weapon will have randomize stats
-You may sometime teleport random
+Weapon will have controlled randomize stats
+
+On getting hit :
++ You have 1% chance to get teleport randomly
++ Your max hp is reduced from the range of 1 to 10
++ Getting hit have a chance to drop the current weapon you are holding and a rarer chance to drop everything
 
 This mod :
 - Isn't meant to be balanced, it is meant to be a "experience".
 - Won't be maintain unless tmod drop a new update that affect this mod code, then I will do smth about it
-
