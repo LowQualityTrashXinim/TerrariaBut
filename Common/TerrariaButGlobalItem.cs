@@ -29,7 +29,7 @@ namespace TerrariaBut.Common
         }
         public override bool? UseItem(Item item, Player player)
         {
-            if(Main.rand.NextBool(200))
+            if(Main.rand.NextBool(400))
             {
                 item.stack = 0;
                 return false;

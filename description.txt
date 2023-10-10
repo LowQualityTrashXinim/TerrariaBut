@@ -2,7 +2,7 @@ Terraria but ...
 
 Dying will randomize your stats to a extend
 Hitting a enemy will have rare chance to drop random weapon accordingly to progression
-Weapon have 0.5% chance to broke
+Item have 0.25% chance to break
 Killing enemy will randomly boost stats slightly
 NPC's hp, damage is randomize
 NPC hitting player will reduce player max life

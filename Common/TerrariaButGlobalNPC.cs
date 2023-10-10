@@ -28,9 +28,14 @@ namespace TerrariaBut.Common
         }
         private void SpawnDupeNPCFunni(NPC npc)
         {
-            if(Main.netMode == NetmodeID.SinglePlayer)
+            if (npc.life <= npc.lifeMax * .1f)
+                return;
+            if (Main.rand.NextBool(npc.life))
             {
-                NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
+                int npclocal = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
+                Main.npc[npclocal].life = npc.life;
+                if (Main.netMode == NetmodeID.Server)
+                    NetMessage.SendData(MessageID.SyncNPC);
             }
         }
         public override void OnKill(NPC npc)
