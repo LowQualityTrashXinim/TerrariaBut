@@ -1,9 +1,8 @@
 ﻿using System;
 using Terraria;
-using Terraria.ModLoader;
-using System.Collections.Generic;
-using Terraria.DataStructures;
 using Terraria.ID;
+using Terraria.ModLoader;
+using Terraria.DataStructures;
 
 namespace TerrariaBut.Common
 {
@@ -30,7 +29,7 @@ namespace TerrariaBut.Common
         {
             if (npc.life <= npc.lifeMax * .1f)
                 return;
-            if (Main.rand.NextBool(npc.life))
+            if (Main.rand.NextBool((int)(npc.life * .5f)))
             {
                 int npclocal = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
                 Main.npc[npclocal].life = npc.life;

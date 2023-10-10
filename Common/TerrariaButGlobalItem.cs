@@ -29,10 +29,22 @@ namespace TerrariaBut.Common
         }
         public override bool? UseItem(Item item, Player player)
         {
-            if(Main.rand.NextBool(400))
+            if (player.ItemAnimationJustStarted)
             {
-                item.stack = 0;
-                return false;
+                if (item.axe != 0 || item.pick != 0)
+                {
+                    if (Main.rand.NextBool(1000))
+                    {
+                        item.stack = 0;
+                        return false;
+                    }
+                    return base.UseItem(item, player);
+                }
+                if (Main.rand.NextBool(400))
+                {
+                    item.stack = 0;
+                    return false;
+                }
             }
             return base.UseItem(item, player);
         }
