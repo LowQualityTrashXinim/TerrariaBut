@@ -1,5 +1,4 @@
-﻿using System;
-using Terraria;
+﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
@@ -8,28 +7,49 @@ namespace TerrariaBut.Common
 {
     internal class TerrariaButGlobalNPC : GlobalNPC
     {
+        public override bool InstancePerEntity => true;
+        float resMelee, resRange, resMagic, resSummon = 1;
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
+            resMelee = Main.rand.NextFloat(0, 1.25f);
+            resRange = Main.rand.NextFloat(0, 1.25f);
+            resMagic = Main.rand.NextFloat(0, 1.25f);
+            resSummon = Main.rand.NextFloat(0, 1.25f);
             npc.lifeMax += Main.rand.Next(-npc.lifeMax + 1, npc.lifeMax);
             npc.life = npc.lifeMax;
             if (npc.damage > 0)
                 npc.damage += Main.rand.Next(-npc.damage + 1, npc.damage);
+            npc.scale += Main.rand.NextFloat(-.75f, 1);
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitByItem(npc, player, item, hit, damageDone);
             SpawnDupeNPCFunni(npc);
+            ResDamage(ref hit);
         }
-        public override void OnHitNPC(NPC npc, NPC target, NPC.HitInfo hit)
+        public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
-            base.OnHitNPC(npc, target, hit);
+            base.OnHitByProjectile(npc, projectile, hit, damageDone);
             SpawnDupeNPCFunni(npc);
+            ResDamage(ref hit);
+        }
+        private void ResDamage(ref NPC.HitInfo hit)
+        {
+            if (hit.DamageType == DamageClass.Melee)
+                hit.Damage = (int)(hit.Damage * resMelee);
+            if (hit.DamageType == DamageClass.Ranged)
+                hit.Damage = (int)(hit.Damage * resRange);
+            if (hit.DamageType == DamageClass.Magic)
+                hit.Damage = (int)(hit.Damage * resMagic);
+            if (hit.DamageType == DamageClass.Summon || hit.DamageType == DamageClass.SummonMeleeSpeed)
+                hit.Damage = (int)(hit.Damage * resSummon);
+
         }
         private void SpawnDupeNPCFunni(NPC npc)
         {
-            if (npc.life <= npc.lifeMax * .1f)
+            if (npc.life <= npc.lifeMax * .05f)
                 return;
-            if (Main.rand.NextBool((int)(npc.life * .5f)))
+            if (Main.rand.NextBool((int)(npc.life * .1f)))
             {
                 int npclocal = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
                 Main.npc[npclocal].life = npc.life;
