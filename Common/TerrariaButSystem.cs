@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using BossRush;
+using TerrariaBut.Common.Utils;
 
 namespace TerrariaBut.Common
 {

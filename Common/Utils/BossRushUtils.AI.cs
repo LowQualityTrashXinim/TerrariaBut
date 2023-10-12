@@ -3,7 +3,7 @@ using Terraria;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace BossRush
+namespace TerrariaBut.Common.Utils
 {
     public static partial class BossRushUtils
     {

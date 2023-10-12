@@ -21,7 +21,9 @@ namespace TerrariaBut.Common
             item.useTime += Main.rand.Next(-item.useTime + 1, item.useTime + 1);
             item.useAnimation += Main.rand.Next(-item.useAnimation + 1, item.useAnimation + 1);
             if (Main.rand.NextBool())
+            {
                 item.shoot = Main.rand.Next(ProjectileLoader.ProjectileCount);
+            }
             item.shootSpeed += item.shootSpeed == 0 ? Main.rand.NextFloat(0, 50) : Main.rand.NextFloat(-item.shootSpeed + 1, item.shootSpeed);
             item.scale += Main.rand.NextFloat(-item.scale + .1f, item.scale);
             item.crit += Main.rand.Next(-100, 100);

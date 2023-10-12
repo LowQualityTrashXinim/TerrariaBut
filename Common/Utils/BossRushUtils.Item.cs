@@ -1,11 +1,10 @@
-﻿using BossRush.Common.Utils;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BossRush
+namespace TerrariaBut.Common.Utils
 {
     public partial class BossRushUtils
     {

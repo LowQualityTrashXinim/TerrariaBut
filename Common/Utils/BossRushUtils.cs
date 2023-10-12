@@ -6,7 +6,7 @@ using Terraria.GameContent;
 using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 
-namespace BossRush
+namespace TerrariaBut.Common.Utils
 {
     public static partial class BossRushUtils
     {
@@ -100,7 +100,7 @@ namespace BossRush
                     && CompareSquareFloatValue(npc.Center, position, maxDistanceSquare, out float dis)
                     && npc.CanBeChasedBy()
                     && !npc.friendly
-                    && (Collision.CanHitLine(position, 10, 10, npc.position, npc.width, npc.height))
+                    && Collision.CanHitLine(position, 10, 10, npc.position, npc.width, npc.height)
                     )
                 {
                     maxDistanceSquare = dis;
@@ -186,7 +186,7 @@ namespace BossRush
                 DistanceX = value1X - value2X,
                 DistanceY = value1Y - value2Y,
                 maxDistanceDouble = maxDistance * maxDistance;
-            return (DistanceX * DistanceX + DistanceY * DistanceY) < maxDistanceDouble;
+            return DistanceX * DistanceX + DistanceY * DistanceY < maxDistanceDouble;
         }
         /// <summary>
         /// Calculate square length of Vector2 and check if it is smaller than square max distance
@@ -204,7 +204,7 @@ namespace BossRush
                 DistanceX = pos1.X - pos2.X,
                 DistanceY = pos1.Y - pos2.Y,
                 maxDistanceDouble = maxDistance * maxDistance;
-            distance = (DistanceX * DistanceX + DistanceY * DistanceY);
+            distance = DistanceX * DistanceX + DistanceY * DistanceY;
             return distance < maxDistanceDouble;
         }
         public static bool CompareSquareFloatValueWithHitbox(Vector2 position, Vector2 positionEntity, Rectangle hitboxEntity, float maxDis)
@@ -317,7 +317,7 @@ namespace BossRush
             {
                 color1 = color[currentIndex];
                 color3 = color[currentIndex];
-                currentIndex = Math.Clamp((currentIndex + 1 >= color.Count) ? 0 : currentIndex + 1, 0, color.Count - 1);
+                currentIndex = Math.Clamp(currentIndex + 1 >= color.Count ? 0 : currentIndex + 1, 0, color.Count - 1);
                 color2 = color[currentIndex];
                 progress = 0;
             }

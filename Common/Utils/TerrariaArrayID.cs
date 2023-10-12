@@ -2,7 +2,7 @@
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace BossRush.Common.Utils
+namespace TerrariaBut.Common.Utils
 {
     public static class TerrariaArrayID
     {
