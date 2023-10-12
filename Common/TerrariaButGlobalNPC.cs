@@ -49,11 +49,11 @@ namespace TerrariaBut.Common
         }
         private void SpawnDupeNPCFunni(NPC npc)
         {
-            if (npc.life <= npc.lifeMax * .05f)
+            if (npc.life <= npc.lifeMax * .05f || npc.life <= 100)
                 return;
             if (Main.rand.NextBool((int)(npc.life * .1f)))
             {
-                int npclocal = NPC.NewNPC(npc.GetSource_FromThis(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
+                int npclocal = NPC.NewNPC(npc.GetSource_FromAI(), (int)npc.Center.X, (int)npc.Center.Y, npc.type);
                 Main.npc[npclocal].life = npc.life;
                 if (Main.netMode == NetmodeID.Server)
                     NetMessage.SendData(MessageID.SyncNPC);

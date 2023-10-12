@@ -54,12 +54,12 @@ namespace TerrariaBut.Common
 
         public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
         {
-            MeleeDMG = Main.rand.NextFloat(0, 3);
-            RangeDMG = Main.rand.NextFloat(0, 3);
-            MagicDMG = Main.rand.NextFloat(0, 3);
-            SummonDMG = Main.rand.NextFloat(0, 3);
-            Movement = Main.rand.NextFloat(0, 3);
-            JumpBoost = Main.rand.NextFloat(0, 3);
+            MeleeDMG = Main.rand.NextFloat(-3, 3);
+            RangeDMG = Main.rand.NextFloat(-3, 3);
+            MagicDMG = Main.rand.NextFloat(-3, 3);
+            SummonDMG = Main.rand.NextFloat(-3, 3);
+            Movement = Main.rand.NextFloat(-3, 3);
+            JumpBoost = Main.rand.NextFloat(-3, 3);
 
             HPMax = Main.rand.Next(-Player.statLifeMax + 1, Player.statLifeMax2);
             HPRegen = Main.rand.NextFloat(0, 100);
@@ -67,11 +67,11 @@ namespace TerrariaBut.Common
             ManaRegen = Main.rand.NextFloat(0, 100);
 
             DefenseBase = Main.rand.Next(-100, 101);
-            DamagePure = Main.rand.NextFloat(0, 3);
-            CritStrikeChance = Main.rand.Next(0, 101);
-            Thorn = Main.rand.NextFloat(0, 3);
-            CritDamage = Main.rand.NextFloat(0, 3);
-            DefenseEffectiveness = Main.rand.NextFloat(0, 3);
+            DamagePure = Main.rand.NextFloat(-3, 3);
+            CritStrikeChance = Main.rand.Next(-3, 101);
+            Thorn = Main.rand.NextFloat(-3, 3);
+            CritDamage = Main.rand.NextFloat(-3, 3);
+            DefenseEffectiveness = Main.rand.NextFloat(-3, 3);
 
             MinionSlot = Main.rand.Next(-10, 10);
             SentrySlot = Main.rand.Next(-10, 10);

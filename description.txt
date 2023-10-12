@@ -11,7 +11,7 @@ Hitting a enemy will have rare chance to drop random weapon accordingly to progr
 Enemy have randomize damage resistance against certain damage type
 
 On getting hit :
-+ You have 1% chance to get teleport randomly
++ You have rare chance to get teleport randomly
 + Your max hp is reduced from the range of 1 to 10
 + Getting hit have a chance to drop the current weapon you are holding and a rarer chance to drop everything
 + Death will randomize your stats to a extend
@@ -22,5 +22,5 @@ Pot have chaotic effect added into them, break them to find out !
 Until then, have fun dying a lot
 
 Additional note from the dev :
-- This mod is like a wild ride, it isn't meant to be balanced, it is meant to be a "experience" so don't expect it to be very playable, and most likely 
+- This mod is wild ride, it isn't meant to be balanced, it is meant to be a "experience" so don't expect it to be very playable, and most likely 
 won't be maintain unless tmod drop a new update that affect this mod code, then I will do smth about it
