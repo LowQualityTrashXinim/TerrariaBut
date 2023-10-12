@@ -17,9 +17,11 @@ namespace TerrariaBut.Common
             resSummon = Main.rand.NextFloat(0, 1.25f);
             npc.lifeMax += Main.rand.Next(-npc.lifeMax + 1, npc.lifeMax);
             npc.life = npc.lifeMax;
+            npc.lifeRegen += Main.rand.Next((int)(npc.lifeMax * .25f));
             if (npc.damage > 0)
                 npc.damage += Main.rand.Next(-npc.damage + 1, npc.damage);
             npc.scale += Main.rand.NextFloat(-.75f, 1);
+            npc.defense += npc.defense == 0 ? Main.rand.Next(1, 20) : Main.rand.Next(-npc.defense, npc.defense);
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {

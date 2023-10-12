@@ -40,7 +40,7 @@ namespace TerrariaBut.Common
                     }
                     return base.UseItem(item, player);
                 }
-                if (Main.rand.NextBool(400))
+                if (Main.rand.NextBool(200))
                 {
                     item.stack = 0;
                     return false;

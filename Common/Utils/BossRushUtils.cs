@@ -55,7 +55,7 @@ namespace BossRush
         /// <param name="offsetposY"></param>
         /// <param name="dramatic"></param>
         /// <param name="dot"></param>
-        public static void CombatTextRevamp(Rectangle location, Color color, string combatMessage, int offsetposY = 0, int timeleft = 30, bool dramatic = false, bool dot = false)
+        public static int CombatTextRevamp(Rectangle location, Color color, string combatMessage, int offsetposY = 0, int timeleft = 30, bool dramatic = false, bool dot = false)
         {
             int drama = 0;
             if (dramatic)
@@ -68,6 +68,7 @@ namespace BossRush
             cbtext.position.X = location.X + location.Width * 0.5f - vector.X * 0.5f;
             cbtext.position.Y = location.Y + offsetposY + location.Height * 0.25f - vector.Y * 0.5f;
             cbtext.lifeTime += timeleft;
+            return text;
         }
         /// <summary>
         /// Use to order 2 values from smallest to biggest

@@ -32,7 +32,7 @@ namespace TerrariaBut.Common
     }
     internal class TerrariaButPlayer : ModPlayer
     {
-        public const int maxStatCanBeAchieved = 9999;
+        public const int maxStatCanBeAchieved = 99999;
         public float MeleeDMG = 0;
         public float RangeDMG = 0;
         public float MagicDMG = 0;

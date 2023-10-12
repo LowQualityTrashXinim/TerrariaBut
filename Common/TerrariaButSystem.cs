@@ -11,12 +11,11 @@ namespace TerrariaBut.Common
     }
     public class TerrariaButTile : GlobalTile
     {
-
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
             if (type == TileID.Pots && Main.rand.NextBool(10))
             {
-                switch (Main.rand.Next(5))
+                switch (Main.rand.Next(10))
                 {
 
                     case 0:
@@ -44,6 +43,31 @@ namespace TerrariaBut.Common
                         break;
                     case 4:
                         NPC.NewNPC(Entity.GetSource_NaturalSpawn(), i, j, NPCID.GoldenSlime);
+                        if (Main.netMode == NetmodeID.Server)
+                            NetMessage.SendData(MessageID.SyncNPC);
+                        break;
+                    case 5:
+                        BossRushUtils.GetWeapon(out int Weapon, out int amount);
+                        Item.NewItem(Entity.GetSource_NaturalSpawn(), i, j, 1, 1, new Item(Weapon, amount));
+                        break;
+                    case 6:
+                        Item.NewItem(Entity.GetSource_NaturalSpawn(), i, j, 1, 1, new Item(ItemID.PlatinumCoin, 10));
+                        break;
+                    case 7:
+                        Projectile.NewProjectile(Entity.GetSource_NaturalSpawn(), new Vector2(i, j), Vector2.UnitX * Main.rand.NextBool().BoolOne(), ProjectileID.LifeCrystalBoulder, 999, 1);
+                        break;
+                    case 8:
+                        int ran = Main.rand.Next(7, 14);
+                        for (int a = 0; a < ran; a++)
+                        {
+                            BossRushUtils.GetWeapon(out int WeaponA, out int amountA);
+                            Item.NewItem(Entity.GetSource_NaturalSpawn(), i, j, 1, 1, new Item(WeaponA, amountA));
+                        }
+                        break;
+                    case 9:
+                        int text = BossRushUtils.CombatTextRevamp(new Rectangle(i, j, 1, 1), Color.Red, "Boo");
+                        Main.combatText[text].scale += 2;
+                        NPC.NewNPC(Entity.GetSource_NaturalSpawn(), i, j, NPCID.Ghost);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.SyncNPC);
                         break;

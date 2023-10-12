@@ -1,10 +1,10 @@
 Terraria but ...
 
-NPC's hp, damage is randomize
+NPC's hp, damage is randomize, and also they can regen life at a random rate
 NPC hitting player will reduce player max life
 
-Weapon have 0.25% chance to break
-Tool have 0.01% chance to break
+Weapon have 0.5% chance to break
+Tool have 0.1% chance to break
 Weapon will have controlled randomize stats
 Killing enemy will randomly boost stats slightly
 Hitting a enemy will have rare chance to drop random weapon accordingly to progression
@@ -17,8 +17,10 @@ On getting hit :
 + Death will randomize your stats to a extend
 
 Tile have 50% to not drop anything and 50% to not be mined at all
-Pot have chaotic effect added into them
+Pot have chaotic effect added into them, break them to find out !
 
 This mod :
 - Isn't meant to be balanced, it is meant to be a "experience" so don't expect it to be very playable.
 - Won't be maintain unless tmod drop a new update that affect this mod code, then I will do smth about it
+
+Until then, have fun dying a lot
