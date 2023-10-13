@@ -11,10 +11,10 @@ namespace TerrariaBut.Common
         float resMelee, resRange, resMagic, resSummon = 1;
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
-            resMelee = Main.rand.NextFloat(0, 1.25f);
-            resRange = Main.rand.NextFloat(0, 1.25f);
-            resMagic = Main.rand.NextFloat(0, 1.25f);
-            resSummon = Main.rand.NextFloat(0, 1.25f);
+            resMelee = Main.rand.NextFloat(0, 1.1f);
+            resRange = Main.rand.NextFloat(0, 1.1f);
+            resMagic = Main.rand.NextFloat(0, 1.1f);
+            resSummon = Main.rand.NextFloat(0, 1.1f);
             npc.lifeMax += Main.rand.Next(-npc.lifeMax + 1, npc.lifeMax);
             npc.life = npc.lifeMax;
             npc.lifeRegen += Main.rand.Next((int)(npc.lifeMax * .25f));
