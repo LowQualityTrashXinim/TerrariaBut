@@ -23,28 +23,34 @@ namespace TerrariaBut.Common
             npc.scale += Main.rand.NextFloat(-.75f, 1);
             npc.defense += npc.defense == 0 ? Main.rand.Next(1, 20) : Main.rand.Next(-npc.defense, npc.defense);
         }
+        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
+        {
+            ResDamage(ref modifiers);
+        }
+        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        {
+            ResDamage(ref modifiers);
+        }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitByItem(npc, player, item, hit, damageDone);
             SpawnDupeNPCFunni(npc);
-            ResDamage(ref hit);
         }
         public override void OnHitByProjectile(NPC npc, Projectile projectile, NPC.HitInfo hit, int damageDone)
         {
             base.OnHitByProjectile(npc, projectile, hit, damageDone);
             SpawnDupeNPCFunni(npc);
-            ResDamage(ref hit);
         }
-        private void ResDamage(ref NPC.HitInfo hit)
+        private void ResDamage(ref NPC.HitModifiers modifiers)
         {
-            if (hit.DamageType == DamageClass.Melee)
-                hit.Damage = (int)(hit.Damage * resMelee);
-            if (hit.DamageType == DamageClass.Ranged)
-                hit.Damage = (int)(hit.Damage * resRange);
-            if (hit.DamageType == DamageClass.Magic)
-                hit.Damage = (int)(hit.Damage * resMagic);
-            if (hit.DamageType == DamageClass.Summon || hit.DamageType == DamageClass.SummonMeleeSpeed)
-                hit.Damage = (int)(hit.Damage * resSummon);
+            if (modifiers.DamageType == DamageClass.Melee)
+                modifiers.FinalDamage *= resMelee;
+            if (modifiers.DamageType == DamageClass.Ranged)
+                modifiers.FinalDamage *= resRange;
+            if (modifiers.DamageType == DamageClass.Magic)
+                modifiers.FinalDamage *= resMagic;
+            if (modifiers.DamageType == DamageClass.Summon || modifiers.DamageType == DamageClass.SummonMeleeSpeed)
+                modifiers.FinalDamage *= resSummon;
 
         }
         private void SpawnDupeNPCFunni(NPC npc)
@@ -107,18 +113,15 @@ namespace TerrariaBut.Common
                     modplayer.CritStrikeChance += RandomizeIntStats / 2;
                     break;
                 case 13:
-                    modplayer.CritDamage += Randomize;
-                    break;
-                case 14:
                     modplayer.DefenseEffectiveness += Randomize;
                     break;
-                case 15:
+                case 14:
                     modplayer.Thorn += Randomize;
                     break;
-                case 16:
+                case 15:
                     modplayer.MinionSlot += 1;
                     break;
-                case 17:
+                case 16:
                     modplayer.SentrySlot += 1;
                     break;
                 default:

@@ -47,35 +47,9 @@ namespace TerrariaBut.Common
         public float DamagePure = 0;
         public int CritStrikeChance = 0;
         public float Thorn = 0;
-        public float CritDamage = 1;
         public float DefenseEffectiveness = 1;
         public int MinionSlot = 0;
         public int SentrySlot = 0;
-
-        public override void Kill(double damage, int hitDirection, bool pvp, PlayerDeathReason damageSource)
-        {
-            MeleeDMG = Main.rand.NextFloat(-3, 3);
-            RangeDMG = Main.rand.NextFloat(-3, 3);
-            MagicDMG = Main.rand.NextFloat(-3, 3);
-            SummonDMG = Main.rand.NextFloat(-3, 3);
-            Movement = Main.rand.NextFloat(-3, 3);
-            JumpBoost = Main.rand.NextFloat(-3, 3);
-
-            HPMax = Main.rand.Next(-Player.statLifeMax + 1, Player.statLifeMax2);
-            HPRegen = Main.rand.NextFloat(0, 100);
-            ManaMax = Main.rand.Next(-Player.statManaMax + 1, Player.statManaMax2);
-            ManaRegen = Main.rand.NextFloat(0, 100);
-
-            DefenseBase = Main.rand.Next(-100, 101);
-            DamagePure = Main.rand.NextFloat(-3, 3);
-            CritStrikeChance = Main.rand.Next(-3, 101);
-            Thorn = Main.rand.NextFloat(-3, 3);
-            CritDamage = Main.rand.NextFloat(-3, 3);
-            DefenseEffectiveness = Main.rand.NextFloat(-3, 3);
-
-            MinionSlot = Main.rand.Next(-10, 10);
-            SentrySlot = Main.rand.Next(-10, 10);
-        }
         public override void ModifyWeaponDamage(Item item, ref StatModifier damage)
         {
             if (item.DamageType == DamageClass.Melee)
@@ -99,10 +73,6 @@ namespace TerrariaBut.Common
         public override void ModifyWeaponCrit(Item item, ref float crit)
         {
             crit = Math.Clamp(CritStrikeChance + crit, 0, maxStatCanBeAchieved);
-        }
-        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
-        {
-            modifiers.CritDamage.Flat = Math.Clamp(CritDamage, -modifiers.CritDamage.Base + 1, 999999) * modifiers.CritDamage.Base;
         }
         public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
         {
@@ -140,7 +110,6 @@ namespace TerrariaBut.Common
             DamagePure = 0;
             CritStrikeChance = 0;
             Thorn = 0;
-            CritDamage = 1;
             DefenseEffectiveness = 1;
             MinionSlot = 0;
             SentrySlot = 0;
@@ -163,7 +132,6 @@ namespace TerrariaBut.Common
             packet.Write(DefenseBase);
             packet.Write(DamagePure);
             packet.Write(CritStrikeChance);
-            packet.Write(CritDamage);
             packet.Write(DefenseEffectiveness);
             packet.Write(MinionSlot);
             packet.Write(SentrySlot);
@@ -185,7 +153,6 @@ namespace TerrariaBut.Common
             tag["DefenseBase"] = DefenseBase;
             tag["DamagePure"] = DamagePure;
             tag["CritStrikeChance"] = CritStrikeChance;
-            tag["CritDamage"] = CritDamage;
             tag["DefenseEffectiveness"] = DefenseEffectiveness;
             tag["MinionSlot"] = MinionSlot;
             tag["SentrySlot"] = SentrySlot;
@@ -206,7 +173,6 @@ namespace TerrariaBut.Common
             DefenseBase = (int)tag["DefenseBase"];
             DamagePure = (float)tag["DamagePure"];
             CritStrikeChance = (int)tag["CritStrikeChance"];
-            CritDamage = (float)tag["CritDamage"];
             DefenseEffectiveness = (float)tag["DefenseEffectiveness"];
             MinionSlot = (int)tag["MinionSlot"];
             SentrySlot = (int)tag["SentrySlot"];
@@ -227,7 +193,6 @@ namespace TerrariaBut.Common
             DefenseBase = reader.ReadInt32();
             DamagePure = reader.ReadSingle();
             CritStrikeChance = reader.ReadInt32();
-            CritDamage = reader.ReadSingle();
             DefenseEffectiveness = reader.ReadSingle();
             MinionSlot = reader.ReadInt32();
             SentrySlot = reader.ReadInt32();
@@ -249,7 +214,6 @@ namespace TerrariaBut.Common
             clone.DefenseBase = DefenseBase;
             clone.DamagePure = DamagePure;
             clone.CritStrikeChance = CritStrikeChance;
-            clone.CritDamage = CritDamage;
             clone.DefenseEffectiveness = DefenseEffectiveness;
             clone.MinionSlot = MinionSlot;
             clone.SentrySlot = SentrySlot;
@@ -271,7 +235,6 @@ namespace TerrariaBut.Common
                 || DefenseBase != clone.DefenseBase
                 || DamagePure != clone.DamagePure
                 || CritStrikeChance != clone.CritStrikeChance
-                || CritDamage != clone.CritDamage
                 || DefenseEffectiveness != clone.DefenseEffectiveness
                 || MinionSlot != clone.MinionSlot
                 || SentrySlot != clone.SentrySlot
