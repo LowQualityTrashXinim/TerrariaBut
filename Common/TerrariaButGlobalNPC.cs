@@ -1,4 +1,5 @@
-﻿using Terraria;
+﻿using System;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
@@ -9,6 +10,19 @@ namespace TerrariaBut.Common
     {
         public override bool InstancePerEntity => true;
         float resMelee, resRange, resMagic, resSummon = 1;
+        public static int AmountOfModCurrentlyEnable()
+        {
+            int HowManyModIsEnable = ModLoader.Mods.Length;
+            return Math.Clamp(HowManyModIsEnable - 2, 0, 99999);
+        }
+        public override void SetDefaults(NPC entity)
+        {
+            float amount = 1 + AmountOfModCurrentlyEnable() * .05f;
+            entity.lifeMax = (int)(amount * entity.lifeMax);
+            entity.life = entity.lifeMax;
+            entity.damage = (int)(amount * entity.damage);
+            entity.defense = (int)(amount * entity.defense);
+        }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
             resMelee = Main.rand.NextFloat(0, 1.1f);
