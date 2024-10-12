@@ -1,3 +1,22 @@
+This mod is wild ride, it isn't meant to be balanced, it is meant to be a "experience" so don't expect it to be very playable, and most likely 
+won't be maintain unless tmod drop a new update that affect this mod code or when I feel like adding idea to this mod, then I will do smth about it
+
+Until then, have fun dying a lot
+
+
+Update 0.1.2
+
+- Fix npc life regen not working
+- Remove random stats perma buff from killing NPC
+- Player have rare chance to regenarate back their lost max life
+- Weapon have 0.1% chance to break instead of 0.5% and tool have 0.05% instead of 0.1%
+- Remove having rare chance to get weapon from hitting enemy
+- Fix tile interaction during world gen
+- Re-adjust custom stats given to NPC
+- Update mod description
+
+Update 0.1
+
 NPC's hp, damage is randomize, and also they can regen life at a random rate
 NPC hitting player will reduce player max life
 
@@ -13,10 +32,3 @@ On getting hit :
 
 Tile have 50% to not drop anything and 50% to not be mined at all
 Pot have chaotic effect added into them, break them to find out !
-
-Additional note from the dev :
-- This mod is wild ride, it isn't meant to be balanced, it is meant to be a "experience" so don't expect it to be very playable, and most likely 
-won't be maintain unless tmod drop a new update that affect this mod code, then I will do smth about it
-- I have remove some funni effect, fix a minor bug, and that pretty much it, I also change the name cause well, it felt that the name didn't made much sense
-
-Until then, have fun dying a lot

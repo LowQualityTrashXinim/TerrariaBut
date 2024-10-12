@@ -35,14 +35,14 @@ namespace TerrariaBut.Common
             {
                 if (item.axe != 0 || item.pick != 0)
                 {
-                    if (Main.rand.NextBool(1000))
+                    if (Main.rand.NextFloat() < 0.0005f)
                     {
                         item.stack = 0;
                         return false;
                     }
                     return base.UseItem(item, player);
                 }
-                if (Main.rand.NextBool(200))
+                if (Main.rand.NextFloat() < 0.001f)
                 {
                     item.stack = 0;
                     return false;

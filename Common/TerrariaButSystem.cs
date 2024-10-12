@@ -14,7 +14,10 @@ namespace TerrariaBut.Common
     {
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
-            base.KillTile(i, j, type, ref fail, ref effectOnly, ref noItem);
+            if(WorldGen.generatingWorld)
+            {
+                return;
+            }
             if (type == TileID.Pots && Main.rand.NextBool(10))
             {
                 IEntitySource source = new EntitySource_TileBreak(i, j);
@@ -67,8 +70,8 @@ namespace TerrariaBut.Common
                         }
                         break;
                     case 9:
-                        //int text = BossRushUtils.CombatTextRevamp(new Rectangle(i, j, 1, 1), Color.Red, "Boo");
-                        //Main.combatText[text].scale += 2;
+                        int text = BossRushUtils.CombatTextRevamp(new Rectangle(i, j, 1, 1), Color.Red, "Boo");
+                        Main.combatText[text].scale += 2;
                         NPC.NewNPC(source, i * 16, j * 16, NPCID.Ghost);
                         if (Main.netMode == NetmodeID.Server)
                             NetMessage.SendData(MessageID.SyncNPC);
