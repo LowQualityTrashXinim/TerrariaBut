@@ -3,8 +3,12 @@ won't be maintain unless tmod drop a new update that affect this mod code or whe
 
 Until then, have fun dying a lot
 
+Update 0.1.3:
+- Add more pot breaking effect
+- Minor rework to pot system
+- Remove random weapon from pot
 
-Update 0.1.2
+Update 0.1.2:
 
 - Fix npc life regen not working
 - Remove random stats perma buff from killing NPC
@@ -15,7 +19,7 @@ Update 0.1.2
 - Re-adjust custom stats given to NPC
 - Update mod description
 
-Update 0.1
+Update 0.1:
 
 NPC's hp, damage is randomize, and also they can regen life at a random rate
 NPC hitting player will reduce player max life

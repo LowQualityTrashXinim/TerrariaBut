@@ -4,8 +4,6 @@ using System.IO;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
-using Terraria.DataStructures;
-using TerrariaBut.Common.Utils;
 
 namespace TerrariaBut.Common
 {
