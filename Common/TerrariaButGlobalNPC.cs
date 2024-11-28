@@ -25,6 +25,7 @@ namespace TerrariaBut.Common
             entity.life = entity.lifeMax;
             entity.damage = (int)(amount * entity.damage);
             entity.defense = (int)(amount * entity.defense);
+            
         }
         public override void PostAI(NPC npc)
         {

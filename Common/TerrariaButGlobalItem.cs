@@ -3,6 +3,7 @@ using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
 using Microsoft.Xna.Framework;
 using Terraria.DataStructures;
+using Terraria.ID;
 
 namespace TerrariaBut.Common
 {
@@ -29,6 +30,25 @@ namespace TerrariaBut.Common
         //    item.crit += Main.rand.Next(-100, 100);
         //    item.autoReuse = Main.rand.NextBool();
         //}
+        public override void SetDefaults(Item entity)
+        {
+            if (entity.consumable && entity.damage > 0)
+            {
+                entity.maxStack = 99;
+            }
+            else if (entity.buffType > 0)
+            {
+                entity.maxStack = 1;
+            }
+            else if (entity.createTile != -1)
+            {
+                entity.maxStack = 99;
+            }
+            else if (entity.ammo != AmmoID.None)
+            {
+                entity.maxStack = 199;
+            }
+        }
         public override bool? UseItem(Item item, Player player)
         {
             if (player.ItemAnimationJustStarted)

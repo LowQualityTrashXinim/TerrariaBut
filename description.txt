@@ -3,6 +3,13 @@ won't be maintain unless tmod drop a new update that affect this mod code or whe
 
 Until then, have fun dying a lot
 
+Update 0.1.3.1:
+- Most consumable weapon now have their stack limited to 99
+- Tile max stack now limited to 99
+- Potion now have their max stack limited to 1
+- Ammo have their stack limit to 199;
+- Forgot to mention having more mod result in NPC's stats getting stronger
+
 Update 0.1.3:
 - Add more pot breaking effect
 - Minor rework to pot system
