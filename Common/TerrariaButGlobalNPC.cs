@@ -25,13 +25,13 @@ namespace TerrariaBut.Common
             entity.life = entity.lifeMax;
             entity.damage = (int)(amount * entity.damage);
             entity.defense = (int)(amount * entity.defense);
-            
+
         }
         public override void PostAI(NPC npc)
         {
             if (++PositiveLifeRegenCount >= 60)
             {
-                PositiveLifeRegen = 0;
+                PositiveLifeRegenCount = 0;
                 npc.life = Math.Clamp(npc.life + PositiveLifeRegen, 0, npc.lifeMax);
             }
         }

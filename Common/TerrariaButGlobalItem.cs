@@ -57,14 +57,14 @@ namespace TerrariaBut.Common
                 {
                     if (Main.rand.NextFloat() < 0.0005f)
                     {
-                        item.stack = 0;
+                        item.TurnToAir();
                         return false;
                     }
                     return base.UseItem(item, player);
                 }
                 if (Main.rand.NextFloat() < 0.001f)
                 {
-                    item.stack = 0;
+                    item.TurnToAir();
                     return false;
                 }
             }

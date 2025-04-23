@@ -3,6 +3,10 @@ won't be maintain unless tmod drop a new update that affect this mod code or whe
 
 Until then, have fun dying a lot
 
+Update 0.1.3.2:
+- Uses correct code for item to be break
+- Fix typo within the code error causing npc regeneration not to work
+
 Update 0.1.3.1:
 - Most consumable weapon now have their stack limited to 99
 - Tile max stack now limited to 99
