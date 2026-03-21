@@ -1,9 +1,6 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using TerrariaBut.Common.Utils;
-using Terraria.DataStructures;
 
 namespace TerrariaBut.Common
 {
@@ -26,6 +23,10 @@ namespace TerrariaBut.Common
                 return;
             }
             noItem = Main.rand.NextBool();
+            if(!noItem)
+            {
+                fail = Main.rand.NextBool();
+            }
         }
     }
 }

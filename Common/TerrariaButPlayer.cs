@@ -17,8 +17,11 @@ namespace TerrariaBut.Common
         public int HPMax = 0;
         public override void UpdateEquips()
         {
-            if(Main.rand.NextBool(200) && HPMax < 0)
+
+            if (HPMax < 0)
             {
+                if(Main.rand.NextBool(200) && !ModContent.GetInstance<TerrariaButConfig>().EvenMoreAnnoying
+                    || Main.rand.NextBool(600) && ModContent.GetInstance<TerrariaButConfig>().EvenMoreAnnoying)
                 HPMax++;
             }
         }
@@ -28,7 +31,7 @@ namespace TerrariaBut.Common
             mana = StatModifier.Default;
 
             health.Flat = HPMax;
-            if(health.Flat <= -Player.statLifeMax2)
+            if (health.Flat <= -Player.statLifeMax2)
             {
                 health.Flat += 1;
             }
@@ -36,6 +39,10 @@ namespace TerrariaBut.Common
         public override void Initialize()
         {
             HPMax = 0;
+        }
+        public override void ModifyNursePrice(NPC nurse, int health, bool removeDebuffs, ref int price)
+        {
+            price *= 10;
         }
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
         {
@@ -94,7 +101,7 @@ namespace TerrariaBut.Common
             {
                 for (int i = 0; i < Player.inventory.Length; i++)
                 {
-                    Player.DropItem(Player.GetSource_FromThis(), Player.Center, ref Player.inventory[i]);
+                    Player.TryDroppingSingleItem(Player.GetSource_FromThis(), Player.inventory[i]);
                 }
             }
         }

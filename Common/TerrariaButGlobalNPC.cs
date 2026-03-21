@@ -3,14 +3,12 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
-using Microsoft.Xna.Framework;
 
 namespace TerrariaBut.Common
 {
     internal class TerrariaButGlobalNPC : GlobalNPC
     {
         public override bool InstancePerEntity => true;
-        float resMelee, resRange, resMagic, resSummon = 1;
         int PositiveLifeRegen = 0;
         int PositiveLifeRegenCount = 0;
         public static int AmountOfModCurrentlyEnable()
@@ -37,10 +35,6 @@ namespace TerrariaBut.Common
         }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
-            resMelee = Main.rand.NextFloat(0, 1f);
-            resRange = Main.rand.NextFloat(0, 1f);
-            resMagic = Main.rand.NextFloat(0, 1f);
-            resSummon = Main.rand.NextFloat(0, 1f);
             npc.lifeMax += Main.rand.Next(-npc.lifeMax + 1, npc.lifeMax);
             npc.life = npc.lifeMax;
             PositiveLifeRegen += Main.rand.Next((int)(npc.lifeMax * .25f));
@@ -49,13 +43,22 @@ namespace TerrariaBut.Common
             npc.scale += Main.rand.NextFloat(-.75f, 1);
             npc.defense += npc.defense == 0 ? Main.rand.Next(0, npc.lifeMax + 1) : Math.Clamp(Main.rand.Next(-npc.defense, npc.defense), 0, npc.lifeMax);
         }
-        public override void ModifyHitByItem(NPC npc, Player player, Item item, ref NPC.HitModifiers modifiers)
+        public override void ModifyShop(NPCShop shop)
         {
-            ResDamage(ref modifiers);
+            foreach (var item in shop.ActiveEntries)
+            {
+                if(item.Item != null && !item.Item.IsAir)
+                {
+                    item.Item.value *= 5;
+                }
+            }
         }
-        public override void ModifyHitByProjectile(NPC npc, Projectile projectile, ref NPC.HitModifiers modifiers)
+        public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
-            ResDamage(ref modifiers);
+            if (npc.boss)
+            {
+                modifiers.FinalDamage.Flat += target.statLife * .15f;
+            }
         }
         public override void OnHitByItem(NPC npc, Player player, Item item, NPC.HitInfo hit, int damageDone)
         {
@@ -66,18 +69,6 @@ namespace TerrariaBut.Common
         {
             base.OnHitByProjectile(npc, projectile, hit, damageDone);
             SpawnDupeNPCFunni(npc);
-        }
-        private void ResDamage(ref NPC.HitModifiers modifiers)
-        {
-            if (modifiers.DamageType == DamageClass.Melee)
-                modifiers.FinalDamage *= resMelee;
-            if (modifiers.DamageType == DamageClass.Ranged)
-                modifiers.FinalDamage *= resRange;
-            if (modifiers.DamageType == DamageClass.Magic)
-                modifiers.FinalDamage *= resMagic;
-            if (modifiers.DamageType == DamageClass.Summon || modifiers.DamageType == DamageClass.SummonMeleeSpeed)
-                modifiers.FinalDamage *= resSummon;
-
         }
         private void SpawnDupeNPCFunni(NPC npc)
         {

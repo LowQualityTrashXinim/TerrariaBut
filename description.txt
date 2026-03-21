@@ -3,6 +3,15 @@ won't be maintain unless tmod drop a new update that affect this mod code or whe
 
 Until then, have fun dying a lot
 
+Update 0.2:
+- Fix some possible future code that may break.
+- Bosses contact damage now deal 15% of player current health resulting more damage, good luck.
+- Nurse heal price is multiply by 10
+- Overall shop prices is multiply by 5 
+- Slight update to tile sometime not being able to be mined.
+- Added a ""Even more annoying" mode, have fun masochist
+- Deleted classes damage reduction to NPC
+
 Update 0.1.3.2:
 - Uses correct code for item to be break
 - Fix typo within the code error causing npc regeneration not to work
@@ -20,7 +29,6 @@ Update 0.1.3:
 - Remove random weapon from pot
 
 Update 0.1.2:
-
 - Fix npc life regen not working
 - Remove random stats perma buff from killing NPC
 - Player have rare chance to regenarate back their lost max life
