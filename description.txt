@@ -3,11 +3,19 @@ won't be maintain unless tmod drop a new update that affect this mod code or whe
 
 Until then, have fun dying a lot
 
-Update 0.2:
+Update 0.1.4.1:
+- Fix a issue where tile sometime duplicate.
+- Fix a massive issue where a enemies would over heal resulting nano machine tanking.
+- Fix a issue where boss NPC would be duplicated on hit.
+- Fix a patch note inaccurately display version number.
+- Fix a possible bug where player health could goes into negative.
+- Fix a issue where shop prices aren't multiply by 5.
+
+Update 0.1.4:
 - Fix some possible future code that may break.
 - Bosses contact damage now deal 15% of player current health resulting more damage, good luck.
 - Nurse heal price is multiply by 10
-- Overall shop prices is multiply by 5 
+- Overall shop prices are multiply by 5 
 - Slight update to tile sometime not being able to be mined.
 - Added a ""Even more annoying" mode, have fun masochist
 - Deleted classes damage reduction to NPC

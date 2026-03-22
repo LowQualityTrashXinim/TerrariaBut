@@ -23,10 +23,6 @@ namespace TerrariaBut.Common
                 return;
             }
             noItem = Main.rand.NextBool();
-            if(!noItem)
-            {
-                fail = Main.rand.NextBool();
-            }
         }
     }
 }

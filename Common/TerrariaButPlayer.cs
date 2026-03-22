@@ -20,9 +20,9 @@ namespace TerrariaBut.Common
 
             if (HPMax < 0)
             {
-                if(Main.rand.NextBool(200) && !ModContent.GetInstance<TerrariaButConfig>().EvenMoreAnnoying
+                if (Main.rand.NextBool(200) && !ModContent.GetInstance<TerrariaButConfig>().EvenMoreAnnoying
                     || Main.rand.NextBool(600) && ModContent.GetInstance<TerrariaButConfig>().EvenMoreAnnoying)
-                HPMax++;
+                    HPMax++;
             }
         }
         public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
@@ -87,7 +87,10 @@ namespace TerrariaBut.Common
         }
         private void OnHitEffect()
         {
-            HPMax -= Main.rand.Next(1, 11);
+            if (Player.statLifeMax2 > 50)
+            {
+                HPMax -= Main.rand.Next(1, 11);
+            }
             if (Main.rand.NextBool(100))
             {
                 if (Main.netMode == NetmodeID.SinglePlayer)

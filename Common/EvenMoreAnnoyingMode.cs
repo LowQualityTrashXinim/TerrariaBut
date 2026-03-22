@@ -35,7 +35,7 @@ namespace TerrariaBut.Common
         int NPC_SpawnCounter = 0;
         public override void PostAI(NPC npc)
         {
-            if (!Check() && !npc.boss && ++NPC_SpawnCounter <= 600)
+            if (!Check() || !npc.boss || ++NPC_SpawnCounter <= 600)
             {
                 return;
             }

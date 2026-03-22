@@ -4,17 +4,17 @@ Configs: {
 
 		EvenMoreAnnoying: {
 			Label: Even More Annoying
-			Tooltip: 
-			'''
-			"A even more annoying challenge for those are pure masochist"
-			- Every hostile mobs have chance to inflict a random vanilla debuff
-			- You no longer can farm mobs using lava or use lava to your advantage
-			- Healing from any healing source are halve
-			- Bosses gain 3 time their health
-			- Enemies have 15% chance to deal 4 time the damage, they also have chance to gain a 10x to their health 
-			- During boss fight, the respective boss will spawn vanilla mobs that related to the boss
-			- Your maximum health regenerate much slower
-			'''
+			Tooltip:
+				'''
+				"A even more annoying challenge for those are pure masochist"
+				- Every hostile mobs have chance to inflict a random vanilla debuff
+				- You no longer can farm mobs using lava or use lava to your advantage
+				- Healing from any healing source are halve
+				- Bosses gain 3 time their health
+				- Enemies have 15% chance to deal 4 time the damage, they also have chance to gain a 10x to their health 
+				- During boss fight, the respective boss will spawn vanilla mobs that related to the boss
+				- Your maximum health regenerate much slower
+				'''
 		}
 	}
 }
