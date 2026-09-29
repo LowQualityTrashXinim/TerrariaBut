@@ -1,7 +1,25 @@
+Here are a list of the mod annoyance:
+- NPC's hp, damage is randomize, and also they can regen life at a random rate
+- NPC hitting player will reduce player max life
+- Weapon have 0.1% chance to break
+- Tool have 0.05% chance to break
+- Pot have randomize effects
+- Friendly town shop prices are multiply by x5 and nurse price are x10
+- Bosses contact damage now deal 15% of player current health resulting more damage
+- Having more mod result in NPC's stats getting stronger
+- Item maximum stack is much much lower.
+- Player on getting hit can get the following effect :
++ You have rare chance to get teleport randomly
++ Your max hp is reduced from the range of 1 to 10
++ Getting hit have a chance to drop the current weapon you are holding and a rarer chance to drop everything
+
 This mod is wild ride, it isn't meant to be balanced, it is meant to be a "experience" so don't expect it to be very playable, and most likely 
 won't be maintain unless tmod drop a new update that affect this mod code or when I feel like adding idea to this mod, then I will do smth about it
-
 Until then, have fun dying a lot
+
+Update 0.1.5:
+- Added several configurations setting for people want to create their own experience.
+- Blacklist some npc type to prevent unforeseen consequence
 
 Update 0.1.4.1:
 - Fix a issue where tile sometime duplicate.

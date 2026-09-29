@@ -3,6 +3,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.DataStructures;
+using TerrariaBut.Common.Utils;
 
 namespace TerrariaBut.Common
 {
@@ -18,6 +19,10 @@ namespace TerrariaBut.Common
         }
         public override void SetDefaults(NPC entity)
         {
+            if (BossRushUtils.GetConfig.Disable_NPCLifeRandomize)
+            {
+                return;
+            }
             float amount = 1 + AmountOfModCurrentlyEnable() * .05f;
             entity.lifeMax = (int)(amount * entity.lifeMax);
             entity.life = entity.lifeMax;
@@ -27,6 +32,10 @@ namespace TerrariaBut.Common
         }
         public override void PostAI(NPC npc)
         {
+            if (BossRushUtils.GetConfig.Disable_NPCCanRegenerate)
+            {
+                return;
+            }
             if (++PositiveLifeRegenCount >= 60)
             {
                 PositiveLifeRegenCount = 0;
@@ -35,6 +44,10 @@ namespace TerrariaBut.Common
         }
         public override void OnSpawn(NPC npc, IEntitySource source)
         {
+            if (BossRushUtils.GetConfig.Disable_NPCLifeRandomize)
+            {
+                return;
+            }
             npc.lifeMax += Main.rand.Next(-npc.lifeMax + 1, npc.lifeMax);
             npc.life = npc.lifeMax;
             PositiveLifeRegen += Main.rand.Next((int)(npc.lifeMax * .25f));
@@ -53,6 +66,10 @@ namespace TerrariaBut.Common
         }
         public override void ModifyActiveShop(NPC npc, string shopName, Item[] items)
         {
+            if (BossRushUtils.GetConfig.Disable_ShopPricex5)
+            {
+                return;
+            }
             foreach (var item in items)
             {
                 if (item == null)
@@ -68,7 +85,7 @@ namespace TerrariaBut.Common
         }
         public override void ModifyHitPlayer(NPC npc, Player target, ref Player.HurtModifiers modifiers)
         {
-            if (npc.boss)
+            if (npc.boss && !BossRushUtils.GetConfig.Disable_BossDeal15PercentageDamage)
             {
                 modifiers.FinalDamage.Flat += target.statLife * .15f;
             }
@@ -85,7 +102,12 @@ namespace TerrariaBut.Common
         }
         private void SpawnDupeNPCFunni(NPC npc)
         {
-            if (npc.boss)
+            if (BossRushUtils.GetConfig.Disable_NPCDuplicateOnHit)
+            {
+                return;
+            }
+            if (npc.boss || npc.type == NPCID.EaterofWorldsBody || npc.type == NPCID.EaterofWorldsHead || npc.type == NPCID.EaterofWorldsTail
+                || npc.type == NPCID.TheDestroyerBody || npc.type == NPCID.TheDestroyerTail || npc.type == NPCID.TheDestroyer)
                 return;
             if (npc.life <= npc.lifeMax * .05f || npc.life <= 100)
                 return;

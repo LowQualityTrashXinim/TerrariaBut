@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TerrariaBut.Common.Utils;
 
 namespace TerrariaBut.Common
 {
@@ -8,6 +9,10 @@ namespace TerrariaBut.Common
     {
         public override void SetDefaults(Item entity)
         {
+            if (BossRushUtils.GetConfig.Disable_ItemMaxStack)
+            {
+                return;
+            }
             if (entity.consumable && entity.damage > 0)
             {
                 entity.maxStack = 99;
@@ -27,6 +32,10 @@ namespace TerrariaBut.Common
         }
         public override bool? UseItem(Item item, Player player)
         {
+            if (BossRushUtils.GetConfig.Disable_ItemBreak)
+            {
+                return base.UseItem(item, player);
+            }
             if (player.ItemAnimationJustStarted)
             {
                 if (item.axe != 0 || item.pick != 0)

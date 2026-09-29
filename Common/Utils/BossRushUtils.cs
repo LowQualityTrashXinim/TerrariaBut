@@ -1,15 +1,17 @@
-﻿using System;
-using Terraria;
-using Terraria.ID;
-using System.Linq;
-using Terraria.GameContent;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using Terraria;
+using Terraria.GameContent;
+using Terraria.ID;
+using Terraria.ModLoader;
 
 namespace TerrariaBut.Common.Utils
 {
     public static partial class BossRushUtils
     {
+        public static TerrariaButConfig GetConfig => ModContent.GetInstance<TerrariaButConfig>();
         public static string GetTheSameTextureAsEntity<T>() where T : class
         {
             var type = typeof(T);

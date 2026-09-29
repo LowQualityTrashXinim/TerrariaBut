@@ -4,6 +4,7 @@ using System.IO;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Terraria.ModLoader.IO;
+using TerrariaBut.Common.Utils;
 
 namespace TerrariaBut.Common
 {
@@ -29,7 +30,10 @@ namespace TerrariaBut.Common
         {
             health = StatModifier.Default;
             mana = StatModifier.Default;
-
+            if(BossRushUtils.GetConfig.Disable_PlayerMaxLifeReduction)
+            {
+                return;
+            }
             health.Flat = HPMax;
             if (health.Flat <= -Player.statLifeMax2)
             {
@@ -42,6 +46,10 @@ namespace TerrariaBut.Common
         }
         public override void ModifyNursePrice(NPC nurse, int health, bool removeDebuffs, ref int price)
         {
+            if (BossRushUtils.GetConfig.Disable_ShopPricex5)
+            {
+                return;
+            }
             price *= 10;
         }
         public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
@@ -91,12 +99,16 @@ namespace TerrariaBut.Common
             {
                 HPMax -= Main.rand.Next(1, 11);
             }
-            if (Main.rand.NextBool(100))
+            if (Main.rand.NextBool(100) && !BossRushUtils.GetConfig.Disable_PlayerRandomlyTeleport)
             {
                 if (Main.netMode == NetmodeID.SinglePlayer)
                     Player.TeleportationPotion();
                 else if (Main.netMode == NetmodeID.MultiplayerClient)
                     NetMessage.SendData(MessageID.RequestTeleportationByServer);
+            }
+            if(BossRushUtils.GetConfig.Disable_PlayerDroppingItem)
+            {
+                return;
             }
             if (Main.rand.NextBool(20))
                 Player.DropSelectedItem();

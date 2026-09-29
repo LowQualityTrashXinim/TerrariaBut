@@ -16,5 +16,69 @@ Configs: {
 				- Your maximum health regenerate much slower
 				'''
 		}
+
+		Headers: {
+			ExtraMode: Extra Mode
+			ItemSetting: Item Setting
+			NPCSetting: NPC Setting
+			BossSetting: Boss Setting
+			PlayerSetting: Player Setting
+			TileSetting: Tile Setting
+		}
+
+		Disable_ItemBreak: {
+			Label: Disable chance of item break on use
+			Tooltip: ""
+		}
+
+		Disable_ItemMaxStack: {
+			Label: Disable item max stack cap
+			Tooltip: ""
+		}
+
+		Disable_NPCLifeRandomize: {
+			Label: Disable enemies stats randomize
+			Tooltip: ""
+		}
+
+		Disable_ShopPricex5: {
+			Label: Disable shop price increases
+			Tooltip: friendly town people become greedy, selling item at 5x time the price. Especially nurse
+		}
+
+		Disable_NPCDuplicateOnHit: {
+			Label: Disable enemies duplicate on hit
+			Tooltip: Hitting enemy have a chance to duplicate itself, the lower the health the better the chance of it duplicating
+		}
+
+		Disable_NPCCanRegenerate: {
+			Label: Disable enemies can regenerate
+			Tooltip: Enemy can regenerate every 1s, disabling enemies stats randomize will also disable this config
+		}
+
+		Disable_BossDeal15PercentageDamage: {
+			Label: Disable boss dealing percentage damage
+			Tooltip: Percentage damage is a custom type of damage the ignore damage reduction and defenses
+		}
+
+		Disable_PlayerMaxLifeReduction: {
+			Label: Disable player max life reduction
+			Tooltip: Getting hit will temporary reduce player maximum health, it will slowly regenerate after a while
+		}
+
+		Disable_PlayerRandomlyTeleport: {
+			Label: Disable player randomly teleport on hit
+			Tooltip: 1 in 100 chance to travel everywhere on getting hit
+		}
+
+		Disable_PlayerDroppingItem: {
+			Label: Disable player dropping item on hit
+			Tooltip: Getting hit have 1 in 20 chance to drop the current item you are holding, and a even rarer chance to drop everything
+		}
+
+		Disable_PotRandomize: {
+			Label: Disable pot randomize effect
+			Tooltip: ""
+		}
 	}
 }

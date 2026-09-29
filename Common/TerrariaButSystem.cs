@@ -1,6 +1,7 @@
 ﻿using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using TerrariaBut.Common.Utils;
 
 namespace TerrariaBut.Common
 {
@@ -12,6 +13,10 @@ namespace TerrariaBut.Common
         public override void KillTile(int i, int j, int type, ref bool fail, ref bool effectOnly, ref bool noItem)
         {
             if (WorldGen.generatingWorld)
+            {
+                return;
+            }
+            if (BossRushUtils.GetConfig.Disable_PotRandomize)
             {
                 return;
             }
